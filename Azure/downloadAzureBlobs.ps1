@@ -14,12 +14,11 @@ ForEach ( $container in $containers ) {
 	$blobName = [string] $blob.Name
 	$containerName = $container.Name 
 
-
+	New-Item -ItemType Directory -Force -Path $destination_path\$containerName  
 	Get-AzureStorageBlobContent -Force -Container $containerName `
 		-Blob $blobName `
-		-Destination $destination_path `
+		-Destination $destination_path\$containerName `
 		-Context $StorageContext  
-
  }
  
 }
